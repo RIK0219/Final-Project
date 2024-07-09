@@ -1,0 +1,176 @@
+<%- include("./header.ejs") %>
+<div class="container mt-5">
+  <div class="row mt-4">
+    <div class="text-center">
+      <h1 class="mb-3 text-black fw-bold mt-5" style="padding-top: 30px; font-family: auto;">
+        Property Types
+      </h1>
+      <p>
+        Eirmod sed ipsum dolor sit rebum labore magna erat. Tempor ut dolore
+        lorem kasd <br />
+        vero ipsum sit eirmod sit. Ipsum diam justo sed rebum vero dolor duo.
+      </p>
+    </div>
+    <div class="col-md-3">
+      <div class="card">
+        <a class="text-center mt-3 bg-light type" href="">
+          <img
+            src="https://broker-portal.onrender.com/img/icon-apartment.png"
+            class="wow"
+        /></a>
+        <div class="cards-body text-center">
+          <h5 class="a1 text-black">Appartment</h5>
+          <p class="p31">80 Properties For Rent</p>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-3">
+      <div class="card">
+        <a class="text-center mt-3 bg-light" href="">
+          <img
+            src="https://broker-portal.onrender.com/img/icon-villa.png"
+            class="wow"
+        /></a>
+        <div class="cards-body text-center">
+          <h5 class="a1 text-black">Villa</h5>
+          <p class="p31">11 Properties For Rent</p>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-3">
+      <div class="card">
+        <a class="text-center mt-3 bg-light" href="">
+          <img
+            src="https://broker-portal.onrender.com/img/icon-house.png"
+            class="wow"
+        /></a>
+        <div class="cards-body text-center">
+          <h5 class="a1 text-black">Home</h5>
+          <p class="p31">110 Properties For Rent</p>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-3">
+      <div class="card">
+        <a class="text-center mt-3 bg-light" href="">
+          <img
+            src="https://broker-portal.onrender.com/img/icon-search.png"
+            class="wow"
+        /></a>
+        <div class="cards-body text-center">
+          <h5 class="a1 text-black">Office</h5>
+          <p class="p31">20 Properties For Rent</p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!--row end-->
+  <div class="row mt-4">
+    <div class="col-md-3">
+      <div class="card">
+        <a class="text-center mt-3 bg-light" href="">
+          <img
+            src="https://broker-portal.onrender.com/img/icon-building.png"
+            class="wow"
+        /></a>
+        <div class="cards-body text-center">
+          <h5 class="a1 text-black">Building</h5>
+          <p class="p31">30 Properties For Rent</p>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-3">
+      <div class="card">
+        <a class="text-center mt-3 bg-light" href="">
+          <img
+            src="https://broker-portal.onrender.com/img/icon-house.png"
+            class="wow"
+        /></a>
+        <div class="cards-body text-center">
+          <h5 class="a1 text-black">P.G</h5>
+          <p class="p31">50 Properties For Rent</p>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-3">
+      <div class="card">
+        <a class="text-center mt-3 bg-light" href="">
+          <img
+            src="https://broker-portal.onrender.com/img/icon-housing.png"
+            class="wow"
+        /></a>
+        <div class="cards-body text-center">
+          <h5 class="a1 text-black">Flat</h5>
+          <p class="p31">95 Properties For Rent</p>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-3">
+      <div class="card">
+        <a class="text-center mt-3 bg-light" href="">
+          <img
+            src="https://broker-portal.onrender.com/img/icon-house.png"
+            class="wow"
+        /></a>
+        <div class="cards-body text-center">
+          <h5 class="a1 text-black">Room</h5>
+          <p class="p31">150 Properties For Rent</p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!--row end-->
+</div>
+<!--container end-->
+
+<!----- property list start ----->
+
+<div class="container mt-5">
+    <div class="bg-light rounded p-3">
+      <div class="bg-white rounded p-4" style="border: 1px dashed rgba(0, 185, 142, .3)">
+        <div class="mg-t-100 mb-5">
+          <h1 class="bhh1 fw-bold" style="font-family: auto;">Showing Best Property For You</h1>
+        </div>
+        <div class="row ">
+          <% p.forEach((pro)=>{ %>
+
+          <div class="col-lg-4 col-md-6 mb-3">
+            <div class="imgbox">
+              <a href="/details"><img class="img-fluid"
+                  src="<%= pro.image.url %>"
+                  style="width: 500px;height: 250px;" alt=""></a>
+              <div class="rounded position-absolute start-0 top-0 m-4 py-1 px-3 text-white" style="background-color: #000;">Rent</div>
+              <div class="rounded position-absolute end-0 bottom-0 m-4 py-0 px-1">
+                <a class="btn text-white" style="background-color: #000;" href="">Available</a>
+              </div>
+              <div class="bg-white rounded-top text-black position-absolute start-0 bottom-0 mx-4 pt-1 px-3">Apartment
+              </div>
+            </div>
+            <div class="p-4 pb-0">
+              <h5 class="text-success mb-3"><%= pro.price %>₹</h5>
+              <a class="d-block h5 mb-2 text-decoration-none" href=""><%= pro.name %></a>
+              <p><i class="fa fa-map-marker-alt text-danger me-2"></i><%= pro.address %></p>
+            </div>
+            <div class="d-flex border-top">
+              <small class="flex-fill text-center border-end py-2"><i
+                  class="fa fa-ruler-combined text-success me-2"></i><%= pro.category %></small>
+              <small class="flex-fill text-center border-end py-2"><i class="fa-solid fa-hand-holding-heart"
+                  style="color: #198754;"></i> Fully Furnised</small>
+              <small class="flex-fill text-center py-2"><i class="fa fa-bath text-success me-2"></i>2 Lat,Bath</small>
+            </div>
+            <div class="text-center">
+              <a class="btn mt-3 text-white" style="background-color: #000;" href="/details/<%= pro._id %>">View details</a>
+            </div>
+          </div>
+          <% }) %>
+          <!-- <div class="col-12 text-center ">
+            <a class="btn btn-primary py-3 px-5 mt-3 mb-3" href="/property">Browse More Property</a>
+          </div> -->
+
+        </div>
+      </div>
+    </div>
+  </div>
+<!------ Property list end--- -->
+
+<%- include("./footer.ejs") %>

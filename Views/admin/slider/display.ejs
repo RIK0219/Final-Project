@@ -1,0 +1,112 @@
+<%- include("../header.ejs") %> <%- include("../sidebar.ejs") %>
+<div class="content-wrapper">
+  <!-- Content Header (Page header) -->
+  <div class="content-header">
+    <div class="container-fluid">
+      <div class="row mb-2">
+        <div class="col-sm-6">
+          <h1 class="m-0">Display</h1>
+        </div>
+        <!-- /.col -->
+        <div class="col-sm-6">
+          <ol class="breadcrumb float-sm-right">
+            <li class="breadcrumb-item"><a href="#">Home</a></li>
+            <li class="breadcrumb-item active">Display</li>
+          </ol>
+        </div>
+        <!-- /.col -->
+      </div>
+      <!-- /.row -->
+    </div>
+    <!-- /.container-fluid -->
+  </div>
+  <!-- /.content-header -->
+  <!-- </div> -->
+  <div class="card">
+    <button
+      type="button"
+      class="btn btn-info"
+      style="float: left"
+      data-toggle="modal"
+      data-target="#modal-default">
+      Add Slider
+    </button>
+    <!-- /.card-header -->
+    <div class="card-body">
+      <table id="example1" class="table table-bordered table-striped">
+        <thead>
+          <tr>
+            <th>S No.</th>
+            <th>Id</th>
+            <th>Caption</th>
+            <th>Image</th>
+
+            <th>Action</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% cd.forEach((item,i)=>{ %>
+          <tr>
+            <td><%= i+1 %></td>
+            <td><%= item.id %></td>
+            <td><%= item.caption %></td>
+            <td><img src="<%= item.image.url %>" width="50" alt="" /></td>
+
+            <td>
+              <a href="/admin/slider/view/<%= item.id %>" class="btn btn-info"
+                ><i class="fa-solid fa-eye"></i
+              ></a>
+              <a href="/admin/slider/edit/<%= item.id %>" class="btn btn-info"
+                ><i class="fa-solid fa-pen-to-square"></i
+              ></a>
+              <a href="/admin/slider/delete/<%= item.id %>" class="btn btn-info"
+                ><i class="fa-solid fa-trash"></i
+              ></a>
+            </td>
+          </tr>
+          <% }) %>
+        </tbody>
+      </table>
+    </div>
+    <!-- /.card-body -->
+  </div>
+  <!-- /.card -->
+</div>
+
+<div class="modal fade" id="modal-default">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title">Add Slider</h4>
+        <button
+          type="button"
+          class="close"
+          data-dismiss="modal"
+          aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form
+          action="/admin/sliderinsert"
+          method="post"
+          enctype="multipart/form-data">
+          <div class="form-group">
+            <label for="">Caption</label>
+            <input type="text" name="caption" class="form-control" value="" />
+            <label for="">Image</label>
+            <input type="file" name="image" class="form-control" />
+            <center>
+              <button class="btn btn-info" type="submit">Insert</button>
+            </center>
+          </div>
+        </form>
+      </div>
+    </div>
+    <!-- /.modal-content -->
+  </div>
+  <!-- /.modal-dialog -->
+</div>
+<!-- /.modal -->
+
+<%- include("../footer.ejs") %>

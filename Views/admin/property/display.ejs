@@ -1,0 +1,152 @@
+<%- include("../header.ejs") %> <%- include("../sidebar.ejs") %>
+<div class="content-wrapper">
+  <!-- Content Header (Page header) -->
+  <div class="content-header">
+    <div class="container-fluid">
+      <div class="row mb-2">
+        <div class="col-sm-6">
+          <h1 class="m-0">Display</h1>
+        </div>
+        <!-- /.col -->
+        <div class="col-sm-6">
+          <ol class="breadcrumb float-sm-right">
+            <li class="breadcrumb-item"><a href="#">Home</a></li>
+            <li class="breadcrumb-item active">Display</li>
+          </ol>
+        </div>
+        <!-- /.col -->
+      </div>
+      <!-- /.row -->
+    </div>
+    <!-- /.container-fluid -->
+  </div>
+  <!-- /.content-header -->
+  <!-- </div> -->
+  <div class="card">
+    <button
+      type="button"
+      class="btn btn-info"
+      style="float: left"
+      data-toggle="modal"
+      data-target="#modal-default">
+      Add Property
+    </button>
+    <!-- /.card-header -->
+    <div class="card-body">
+      <table id="example1" class="table table-bordered table-striped">
+        <thead>
+          <tr>
+            <th>Id</th>
+            <th>Name</th>
+            <th>price</th>
+            <!-- <th>Discreption</th>
+            <th>BHK</th> -->
+            <th>Address</th>
+            <th>City</th>
+            <th>State</th>
+            <th>Image</th>
+
+            <th>Action</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% d.forEach((item)=>{ %>
+          <tr>
+            
+            <td><%= item.id %></td>
+            <td><%= item.name %></td>
+            <td><%= item.price %> ₹</td>
+            <td><%= item.address %></td>
+            <td><%= item.city %></td>
+            <td><%= item.state %></td>
+            <td><img src="<%= item.image.url %>" width="50" alt="" /></td>
+
+            <td>
+              <a href="/admin/property/view/<%= item.id %>" class="btn btn-info"
+                ><i class="fa-solid fa-eye"></i
+              ></a>
+              <a href="/admin/property/edit/<%= item.id %>" class="btn btn-info"
+                ><i class="fa-solid fa-pen-to-square"></i
+              ></a>
+              <a
+                href="/admin/property/delete/<%= item.id %>"
+                class="btn btn-info"
+                ><i class="fa-solid fa-trash"></i
+              ></a>
+            </td>
+          </tr>
+          <% }) %>
+        </tbody>
+        <!-- <tfoot>
+          <tr>
+                <th>Id</th>
+                <th>Name</th>
+                <th>Course</th>
+                <th>Status</th>
+                <th>Comment</th>
+                <th></th>
+                <th>Action</th>
+              </tr>
+        </tfoot> -->
+      </table>
+    </div>
+    <!-- /.card-body -->
+  </div>
+  <!-- /.card -->
+</div>
+
+<div class="modal fade" id="modal-default">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title">Add Proterty</h4>
+        <button
+          type="button"
+          class="close"
+          data-dismiss="modal"
+          aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form
+          action="/admin/propertyinsert"
+          method="post"
+          enctype="multipart/form-data">
+          <div class="form-group">
+            <label for="">Property Name</label>
+            <input type="text" name="name" class="form-control" value="" />
+            <label for="">Price</label>
+            <input type="number" name="price" class="form-control" />
+            <label for="">Discreption</label>
+            <input type="text" name="discreption" class="form-control" />
+            <label for="">Category</label>
+            <select name="category" id="" class="form-control">
+              <option value="">select category</option>
+              <% cat.forEach((c)=>{ %>
+              <option value="<%= c.name %>"><%= c.name %></option>
+
+              <% }) %>
+            </select>
+            <label for="">Address</label>
+            <input type="text" name="address" class="form-control" />
+            <label for="">City</label>
+            <input type="text" name="city" class="form-control" />
+            <label for="">State</label>
+            <input type="text" name="state" class="form-control" />
+            <label for="">Image</label>
+            <input type="file" name="image" class="form-control" />
+            <center>
+              <button class="btn btn-info" type="submit">Insert</button>
+            </center>
+          </div>
+        </form>
+      </div>
+    </div>
+    <!-- /.modal-content -->
+  </div>
+  <!-- /.modal-dialog -->
+</div>
+<!-- /.modal -->
+
+<%- include("../footer.ejs") %>

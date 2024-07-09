@@ -1,0 +1,220 @@
+<%- include("./header.ejs") %>
+  <!--slide start-->
+  <div class="carousel slide" data-bs-ride="carousel" id="FFS">
+    <!-- <div class="carousel-indicators">
+      <button type="button" data-bs-target="#FFS" data-bs-slide-to="0" class="active"></button>
+      <button type="button" data-bs-target="#FFS" data-bs-slide-to="1"></button>
+      <button type="button" data-bs-target="#FFS" data-bs-slide-to="2"></button>
+    </div> -->
+    <button class="carousel-control-prev" data-bs-target="#FFS" data-bs-slide="prev">
+      <span class="carousel-control-prev-icon"></span>
+    </button>
+    <button class="carousel-control-next" data-bs-target="#FFS" data-bs-slide="next">
+      <span class="carousel-control-next-icon"></span>
+    </button>
+    <!--carousel-inner start-->
+    <div class="carousel-inner">
+      <% s.forEach((slid)=>{ %>
+
+        <div class="carousel-item <%= slid.role %>" data-bs-interval="2000">
+          <img src="<%= slid.image.url %>" alt="" class="w-100 image" style="height: 95vh;" />
+          <div class="caption d-md-block">
+            <h1 class="">
+              <%= slid.caption %>
+            </h1>
+          </div>
+        </div>
+        <% }) %>
+          <!-- <div class="carousel-item" data-bs-interval="2000">
+        <img src="https://res.cloudinary.com/ddz1pswrm/image/upload/v1682584435/SliderImage/fprnnchlqmzp5hcd2my5.webp"
+          alt="" class="w-100" style="height: 95vh;" />
+        <div class="caption d-none d-md-block">
+          <h1 class="text-black">this is caption for our properties!!</h1>
+        </div>
+      </div>
+      <div class="carousel-item" data-bs-interval="2000">
+        <img src="https://res.cloudinary.com/ddz1pswrm/image/upload/v1682584764/SliderImage/lzwwfh8mb91pab3qgqvv.jpg"
+          alt="" class="w-100" style="height: 95vh;" />
+        <div class="caption d-none d-md-block">
+          <h1 class="text-black">this is caption for our properties!!</h1>
+        </div>
+      </div> -->
+    </div>
+  </div>
+  <!--slider end-->
+
+  <!-------------------------------------------- search start------------------------------------------------- -->
+  <div class="container-fluid mb-5" style="padding: 25px; background-color: rgb(222 247 252);">
+    <div class="container">
+
+      <form action="/propertySearch">
+        <div class="row">
+          <div class="col-md-3">
+
+          </div>
+
+          <div class="col-md-8 ">
+            <div class="row">
+              <div class="col-md-6">
+                <input type="text" name="search" class="form-control border-2 py-2"
+                  placeholder=" Search Property By City , Area ">
+              </div>
+              <div class="col-md-6 search ">
+                <button type="submit" class="btn btn-dark py-2 px-5">Search</button>
+              </div>
+      </form>
+    </div>
+  </div>
+  <div class="col-md-3"></div>
+  </div>
+  </form>
+  </div>
+  </div>
+  <!----------------------------------------------Search end---------------------------------------------->
+
+  <div class="container">
+    <div class="bg-light rounded p-3">
+      <div class="bg-white rounded p-4" style="border: 1px dashed rgba(0, 185, 142, .3)">
+        <div class="row">
+
+          <% c.forEach((cat)=>{ %>
+            <div class="col-md-4 mb-3">
+              <div class="card">
+                <a href="/bhk/<%= cat.name %>" style="text-decoration: none;">
+                  <img src="<%= cat.image.url %>" width="387" height="300">
+                  <div class="card-body">
+                    <h5 class="oh1 text-center text-black">
+                      <%= cat.name %>
+                    </h5>
+                    <center>
+                      <button class="big btn-info text-white"><a href="/bhk/<%= cat.name %>"
+                          style="text-decoration: none; color: white;">Get Now</a></button>
+                    </center>
+                  </div>
+                </a>
+              </div>
+            </div>
+
+            <% }) %>
+
+
+        </div>
+      </div>
+    </div>
+  </div>
+  </div> <!--container end-->
+
+  <!--------------------------------- counter section start------------------------------------------>
+
+  <div class="container mt-5" style="background-color: rgb(134 146 163);">
+    <div class="row">
+      <div class="col-md-4 count ">
+        <h1><span class="counter">1,523</span></h1>
+        <h3 class="text-white "> Happy Customers</h3>
+        <i class="fa fa-users"></i>
+      </div>
+      <div class="col-md-4 count">
+        <h1><span class="counter">2,230</span></h1>
+        <h3 class="text-white">Our Renters</h3>
+        <i class="fa-solid fa-user-plus"></i>
+      </div>
+      <div class="col-md-4 count">
+        <h1><span class="counter">12,218</span></h1>
+        <h3 class="text-white">Followers</h3>
+        <i class="fa-brands fa-facebook"></i>
+        <i class="fa-brands fa-twitter"></i>
+        <i class="fa-brands fa-facebook"></i>
+        <i class="fa-brands fa-whatsapp"></i>
+      </div>
+    </div>
+  </div>
+
+  <!------------------------------counter section end-------------------------------------->
+
+  <!----- property list start ----->
+
+  <div class="container mt-5">
+    <div class="bg-light rounded p-3">
+      <div class="bg-white rounded p-4" style="border: 1px dashed rgba(0, 185, 142, .3)">
+        <div class="mg-t-100 mb-5">
+          <h1 class="bhh1 fw-bold" style="font-family: auto;">Showing Best Property For You</h1>
+        </div>
+        <div class="row ">
+          <% p.forEach((pro)=>{ %>
+
+            <div class="col-lg-4 col-md-6 mb-3">
+              <div class="imgbox">
+                <a href="/details/<%= pro._id %>"><img class="img-fluid" src="<%= pro.image.url %>"
+                    style="width: 500px;height: 250px;" alt=""></a>
+                <div class="rounded position-absolute start-0 top-0 m-4 py-1 px-3 text-white"
+                  style="background-color: #000;">Rent</div>
+                <div class="rounded position-absolute end-0 bottom-0 m-4 py-0 px-1">
+                  <a class="btn text-white" style="background-color: #000;" href="">Available</a>
+                </div>
+                <div class="bg-white rounded-top text-black position-absolute start-0 bottom-0 mx-4 pt-1 px-3">Apartment
+                </div>
+              </div>
+              <div class="p-4 pb-0">
+                <h5 class="text-success mb-3">
+                  <%= pro.price %>₹
+                </h5>
+                <a class="d-block h5 mb-2 text-decoration-none" href="">
+                  <%= pro.name %>
+                </a>
+                <p><i class="fa fa-map-marker-alt text-danger me-2"></i>
+                  <%= pro.address %>
+                </p>
+              </div>
+              <div class="d-flex border-top">
+                <small class="flex-fill text-center border-end py-2"><i
+                    class="fa fa-ruler-combined text-success me-2"></i>
+                  <%= pro.category %>
+                </small>
+                <small class="flex-fill text-center border-end py-2"><i class="fa-solid fa-hand-holding-heart"
+                    style="color: #198754;"></i> Fully Furnised</small>
+                <small class="flex-fill text-center py-2"><i class="fa fa-bath text-success me-2"></i>2 Lat,Bath</small>
+              </div>
+              <div class="text-center">
+                <a class="btn mt-3 text-white" style="background-color: #000;" href="/details/<%= pro._id %>">View
+                  details</a>
+              </div>
+            </div>
+            <% }) %>
+              <!-- <div class="col-12 text-center ">
+                <a class="btn btn-primary py-3 px-5 mt-3 mb-3" href="/property">Browse More Property</a>
+              </div> -->
+              <!-- <% for(let j=1; j<=totalPages; j++){ %>
+
+                <a href="?page<%= j %>">
+                  <%= j %>
+                </a>
+                <% } %> -->
+        </div>
+      </div>
+    </div>
+    <!-- <% for(let j =1; j<=totalPages; j++){ %>
+
+    <a href = "?page<%= j %>"><%= j %> </a>
+    <%
+  }
+  %> -->
+  </div>
+  <!-- <%
+  for(let j =1; j<=totalPages; j++){ %>
+
+    <a href = "?page<%= j %>"><%= j %> </a>
+    <%
+  }
+  %> -->
+  <!-- pagination start  -->
+  <ul class="pagination justify-content-center mt-5">
+    <li class="page-item"><a class="page-link" style="font-size: 18px;" href="#">Previous</a></li>
+    <li class="page-item"><a class="page-link" style="font-size: 18px;" href="">1</a></li>
+    <li class="page-item"><a class="page-link" style="font-size: 18px;" href="#">2</a></li>
+    <li class="page-item"><a class="page-link" style="font-size: 18px;" href="#">3</a></li>
+    <li class="page-item"><a class="page-link" style="font-size: 18px;" href="#">Next</a></li>
+  </ul>
+  <!-- pagination end -->
+  <!------ Property list end---
+
+  <%- include("./footer.ejs") %>

@@ -1,0 +1,143 @@
+<%- include("./header.ejs") %>
+
+    <!-- Details -->
+    <div class="container mt-5 py-5">
+        <h1 class="text-center bg-light text-black" style="font-family: auto; margin-top: 50px; ">PROPERTY DETAIL</h1>
+        <div class="bg-light rounded p-3">
+            <div class="bg-white rounded p-4" style="border: 1px dashed #def7fc;">
+                <div class="row align-items-center">
+
+                    <div class="col-lg-6">
+                        <!-- slider bar start  -->
+
+                        <img src="<%= p.image.url %>" alt="" class="w-100">
+                    </div>
+                    <!-- slider bar End-->
+
+                    <div class="col-lg-6 px-5">
+                        <% if(msg.length>0){ %>
+                            <div class="alert alert-success">
+                                <%= msg %>
+                            </div>
+                            <% } %>
+                                <div>
+                                    <h1 class=" text-success text-center title " style="background-color: #def7fc;;">
+                                        <%= p.name %>
+                                    </h1>
+                                </div>
+                                <hr>
+                                <p class="mb-4 align-items-center text-danger title">
+                                    <%= p.address %>
+                                </p>
+                                <p></p>
+                                <p><i class="fa fa-check text-success me-3 "></i>
+                                    <%= p.price %>₹
+                                </p>
+                                <p><i class="fa fa-check text-success me-3"></i>
+                                    <%= p.category %>
+                                </p>
+                                </p>
+                                <!-- <p><i class="fa fa-check text-success me-3"></i>
+                                2 Lat,Bath
+                            </p> -->
+                                <p><i class="fa fa-check text-success me-3"> </i>
+                                    <%= p.discreption %>
+                                        <p>
+                                        <p><i class="fa fa-check text-success me-3"> </i>
+                                            <%= p.city %>
+                                                <p>
+                                                <p><i class="fa fa-check text-success me-3"> </i>
+                                                    <%= p.state %>
+                                                        <p>
+                                                            <i class="fa fa-check text-success me-3"> </i>
+                                                            Rent
+                                                        </p>
+                                                        <p><i class="fa fa-check text-success me-3"> </i>
+                                                            Available
+                                                        </p>
+
+
+
+
+
+                                                        <button type="button" class="btn py-3 px-5 mt-3"
+                                                            data-bs-toggle="modal" data-bs-target="#exampleModal"
+                                                            style="background-color: #def7fc; font-size: 22px;">
+                                                            Book Now
+                                                        </button>
+
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+
+    <div class="container">
+        <div class="bg-white rounded p-4" style="border: 1px dashed rgba(0, 185, 142, 0.3)">
+            <div class="row">
+                <iframe
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3580.4039783638354!2d78.2076367739883!3d26.183533791048674!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3976c38e53d51197%3A0xf1bf39e977689cd3!2sSun%20Valley!5e0!3m2!1sen!2sin!4v1716536155246!5m2!1sen!2sin"
+                    width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"
+                    referrerpolicy="no-referrer-when-downgrade"></iframe>
+            </div>
+        </div>
+    </div>
+    <br />
+
+
+    <!-- Modal -->
+    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" style="font-family: auto;">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="exampleModalLabel">
+
+                        <%= p.name %>
+                    </h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form action="/admin/bookproperty" method="post">
+                        <input type="hidden" readonly value="<%= p.id %>" name="id" class="form-control" />
+
+                        <div class="md-3">
+                            <label for="">PROPERTY Name</label>
+                            <input type="text" readonly value=" <%= p.name %>" name="propertyName"
+                                class="form-control" />
+                        </div>
+                        <div class="md-3">
+                            <label for="">BHK</label>
+                            <input type="text" readonly value=" <%= p.category %>" name="bhk" class="form-control" />
+                        </div>
+                        <div class="md-3">
+                            <label for="">Price</label>
+                            <input type="text" readonly value=" <%= p.price %>" name="price" class="form-control" />
+                        </div>
+                        <div class="md-3">
+                            <label for="">Name</label>
+                            <input type="text" name="name" class="form-control" />
+                        </div>
+                        <div class="md-3">
+                            <label class="mt-3" for="">Email</label>
+                            <input type="email" name="email" class="form-control" />
+                        </div>
+                        <div class="md-3">
+                            <label class="mt-3" for="">Address</label>
+                            <input type="text" name="address" class="form-control" />
+                        </div>
+                        <div class="md-3">
+                            <label class="mt-3" for="">Mobile No.</label>
+                            <input type="number" name="mobile" class="form-control" />
+                        </div>
+
+
+                        <button type="submit" class="btn btn-primary mt-3">Submit</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <%- include("./footer.ejs") %>

@@ -1,0 +1,156 @@
+<%- include("./header.ejs") %>
+
+<div class="container-fluid" style="margin-top: 100px">
+  <div class="row" id="fs_app">
+    <section class="col-12" id="fs_header_bar">
+      <div class="row">
+        <div class="col-2">
+          <i class="fa fa-chevron-left"></i>
+        </div>
+      </div>
+    </section>
+
+    <!-- <section class="col-12" id="fs_price_body">
+        <div>
+          <span class="heading "> Property </span>
+          <div class="row">
+            <div class="col-4  ">
+              <button class="btn sec" type="button">Flat</button>
+            </div>
+            <div class="col-4 active">
+              <button class="btn sec" type="button">P.G</button>
+            </div>
+            <div class="col-4">
+              <button class="btn sec" type="button">Room</button>
+            </div>
+          </div>
+          <div class="line"></div>
+
+      </section> -->
+    <div class="row">
+      <section class="col-2" id="fs_distance_body">
+        <form action="/area" method="get">
+          <span class="heading">Filters </span>
+          <!-- <div class="contents ">
+            <ul>
+              <li>
+                <span class="">FLAT</span>
+                <input type="checkbox" name="check">
+              </li>
+              <li class="active">
+                <span class=""> SINGLE ROOM</span>
+
+                <input type="checkbox" name="check">
+              </li>
+              <li class="active">
+                <span class=""> P.G</span>
+
+                <input type="checkbox" name="check">
+
+              </li>
+
+            </ul>
+          </div> -->
+          <span class="heading"> By Area </span>
+          <div class="contents">
+            <ul>
+              <% cat.forEach((c)=>{ %>
+              <li>
+                <span><%= c.name %> </span>
+                <input type="checkbox" name="area" value="<%= c.name %>" />
+              </li>
+
+              <% }) %>
+            </ul>
+          </div>
+          <!-- <span class="heading"> City </span>
+          <div class="contents">
+
+              <select name="city" class="form-control">
+                  <option value="" >Select City</option>
+                      <% sp.forEach((s)=>{ %>
+                          <option value="<%= s.city %>"><%= s.city %></option>
+
+                      <% }) %>
+
+              </select>
+
+
+
+
+
+
+              </ul>
+
+          </div> -->
+
+          <button type="submit" class="btn btn-success py-3 px-5 mt-3 mb-3">
+            Apply Filter
+          </button>
+        </form>
+      </section>
+
+      <section class="col-10 d-flex">
+        <div class="row">
+          <% if (sp.length>0) { %> <% sp.forEach((s)=>{ %>
+          <div class="col-md-4 mb-3 border">
+            <div class="searchimgbox" style="padding: 10px">
+              <a href=""
+                ><img
+                  class="img-fluid"
+                  src="<%= s.image.url %>"
+                  style="width: 1500px; height: 200px"
+                  alt=""
+              /></a>
+              <!-- <div
+                                class="bg-success rounded text-white position-absolute start-0 top-0 m-4 py-1 px-3">
+                                Rent
+                            </div> -->
+              <!-- <div
+                                class="bg-success rounded text-white position-absolute end-0 bottom-0 m-4 pb-0 px-1">
+                                <a class="btn btn-success" href="">
+                                    Available
+                                </a>
+                            </div>
+                            <div
+                                class="bg-white rounded-top text-success position-absolute start-0 bottom-0 mx-4 pt-1 px-3">
+                                Apartment
+                            </div> -->
+            </div>
+            <div class="p-4 pb-0">
+              <h5 class="text-success mb-3"><%= s.price %></h5>
+              <a class="d-block h5 mb-2 text-decoration-none" href="">
+                <%= s.name %>
+              </a>
+              <p>
+                <i class="fa fa-map-marker-alt text-danger me-2"></i>
+                <%= s.address %>
+              </p>
+            </div>
+            <div class="d-flex border-top">
+              <small class="flex-fill text-center border-end py-2"
+                ><i class="fa fa-ruler-combined text-success me-2"></i>
+                <%= s.category %>
+              </small>
+              <small class="flex-fill text-center border-end py-2"
+                ><i
+                  class="fa-solid fa-hand-holding-heart"
+                  style="color: #198754"></i>
+                Fully Furnised
+              </small>
+              <small class="flex-fill text-center py-2"
+                ><i class="fa fa-bath text-success me-2"></i>
+                2 Lat,Bath
+              </small>
+            </div>
+          </div>
+
+          <% })%> <% }else{ %>
+          <h1>Property Not Found</h1>
+          <% } %>
+        </div>
+      </section>
+    </div>
+  </div>
+</div>
+<%- include("./footer.ejs") %>
