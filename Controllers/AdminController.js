@@ -152,14 +152,6 @@ class AdminController {
       console.log(error);
     }
   };
-  // static GoogleLoadAuth = async(req,res)=>{
-  //   try{
-  //     res.render('auth')
-  //   }
-  //   catch(e){
-  //     console.log(e)
-  //   }
-  // }
   static successGoogleLogin = (req , res) => { 
 	if(req.user) 
 		res.redirect('/login'); 
